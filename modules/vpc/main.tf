@@ -41,7 +41,8 @@ resource "aws_subnet" "pub_sub1" {
 
     tags = {
       Name = "pub_sub1"
-      "kubernetes.io/cluster/${var.PROJECT_NAME}" = "shared"
+      #this cluster tag should contain the complete name of the cluster otherwise resources like ALB could not be created in the cluster
+      "kubernetes.io/cluster/${var.PROJECT_NAME}-eks-cluster" = "shared"
       "kubernetes.io/role/elb" = 1
 
 
@@ -60,7 +61,8 @@ resource "aws_subnet" "pub_sub2" {
 
     tags = {
       Name = "pub-sub2"
-      "kubernetes.io/cluster/${var.PROJECT_NAME}" = "shared"
+      #this cluster tag should contain the complete name "${var.PROJECT_NAME}-eks-cluster" of the cluster otherwise resources like ALB could not be created in the cluster
+      "kubernetes.io/cluster/${var.PROJECT_NAME}-eks-cluster" = "shared"
       "kubernetes.io/role/elb" = 1
     }
 }
@@ -104,7 +106,8 @@ resource "aws_subnet" "pri_sub3" {
 
     tags = {
       Name = "pri-sub3"
-      "kubernetes.io/cluster/${var.PROJECT_NAME}" = "shared"
+      #this cluster tag should contain the complete name of the cluster otherwise resources like ALB could not be created in the cluster
+      "kubernetes.io/cluster/${var.PROJECT_NAME}-eks-cluster" = "shared"
       "kubernetes.io/role/internal-elb" = 1
     }
 
@@ -118,7 +121,8 @@ resource "aws_subnet" "pri_sub4" {
 
     tags = {
       Name = "pri-sub4"
-      "kubernetes.io/cluster/${var.PROJECT_NAME}" = "shared"
+      #this cluster tag should contain the complete name of the cluster otherwise resources like ALB could not be created in the cluster
+      "kubernetes.io/cluster/${var.PROJECT_NAME}-eks-cluster" = "shared"
       "kubernetes.io/role/internal-elb" = 1
     }
 
